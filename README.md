@@ -21,19 +21,6 @@
 
 ## items テーブル
 
-<<<<<<< Updated upstream
-| Column          | Type       | Options                        |
-| ----------------| ---------- | ------------------------------ |
-| item_name       | string     | null: false                    |
-| text            | text       | null: false                    |
-| category        | integer    | null: false                    |
-| status          | integer    | null: false                    |
-| delivery_charge | integer    | null: false                    |
-| delivery_area   | integer    | null: false                    |
-| days            | string     | null: false                    |
-| price           | string     | null: false                    |
-| user            | references | null: false, foreign_key: true |
-=======
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | item_name          | string     | null: false                    |
@@ -45,7 +32,6 @@
 | days               | string     | null: false                    |
 | price              | string     | null: false                    |
 | user               | references | null: false, foreign_key: true |
->>>>>>> Stashed changes
 
 
 ### Association
@@ -78,23 +64,13 @@
 | address       | string     | null: false                    |
 | building_name | string     |                                |
 | municipality  | string     | null: false                    |
-<<<<<<< Updated upstream
-| user          | references | null: false, foreign_key: true |
-| item          | references | null: false, foreign_key: true |
-=======
 | user          | string     | null: false                    |
 | item          | string     | null: false                    |
->>>>>>> Stashed changes
 
 ### Association
 
 - belongs_to :user
-<<<<<<< Updated upstream
 - belongs_to :item
-=======
-- belongs_to :item
-
-
 
 ## customer テーブル
 
@@ -110,5 +86,3 @@
 - belongs_to :user
 - has_many   :item
 - has_one    :address
-
->>>>>>> Stashed changes
