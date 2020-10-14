@@ -21,6 +21,7 @@
 
 ## items テーブル
 
+<<<<<<< Updated upstream
 | Column          | Type       | Options                        |
 | ----------------| ---------- | ------------------------------ |
 | item_name       | string     | null: false                    |
@@ -32,13 +33,26 @@
 | days            | string     | null: false                    |
 | price           | string     | null: false                    |
 | user            | references | null: false, foreign_key: true |
+=======
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| item_name          | string     | null: false                    |
+| text               | text       | null: false                    |
+| category_id        | integer    | null: false                    |
+| status_id          | integer    | null: false                    |
+| delivery_charge_id | integer    | null: false                    |
+| delivery_area_id   | integer    | null: false                    |
+| days               | string     | null: false                    |
+| price              | string     | null: false                    |
+| user               | references | null: false, foreign_key: true |
+>>>>>>> Stashed changes
 
 
 ### Association
 
 - belongs_to :user
 - has_many   :comments
-- has_one    :shopping_address
+- has_one    :address
 
 ## comments テーブル
 
@@ -54,7 +68,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## shipping_address テーブル
+## Address テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
@@ -64,10 +78,37 @@
 | address       | string     | null: false                    |
 | building_name | string     |                                |
 | municipality  | string     | null: false                    |
+<<<<<<< Updated upstream
 | user          | references | null: false, foreign_key: true |
 | item          | references | null: false, foreign_key: true |
+=======
+| user          | string     | null: false                    |
+| item          | string     | null: false                    |
+>>>>>>> Stashed changes
 
 ### Association
 
 - belongs_to :user
+<<<<<<< Updated upstream
 - belongs_to :item
+=======
+- belongs_to :item
+
+
+
+## customer テーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
+| address | references | null: false, foreign_key: true |
+
+
+### Association
+
+- belongs_to :user
+- has_many   :item
+- has_one    :address
+
+>>>>>>> Stashed changes
