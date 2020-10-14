@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column           | Type   | Options     |
-| ---------------- | ------ | ----------- |
-| nickname         | string | null: false |
-| email            | string | null: false |
-| password         | string | null: false |
-| first_name       | string | null: false |
-| last_name        | string | null: false |
-| first_name_kana  | string | null: false |
-| last_name_kana   | string | null: false |
-| birthday         | date   | null: false |
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| first_name         | string | null: false |
+| last_name          | string | null: false |
+| first_name_kana    | string | null: false |
+| last_name_kana     | string | null: false |
+| birthday           | date   | null: false |
 
 
 ### Association
@@ -29,7 +29,7 @@
 | status_id          | integer    | null: false                    |
 | delivery_charge_id | integer    | null: false                    |
 | delivery_area_id   | integer    | null: false                    |
-| days               | string     | null: false                    |
+| days_id            | integer    | null: false                    |
 | price              | string     | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
@@ -37,8 +37,8 @@
 ### Association
 
 - belongs_to :user
+- has_one    :customer
 - has_many   :comments
-- has_one    :address
 
 ## comments テーブル
 
@@ -54,7 +54,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## Street_address テーブル
+## street_addresses テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
@@ -70,7 +70,7 @@
 
 - belongs_to :customer
 
-## customer テーブル
+## customers テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -79,6 +79,6 @@
 
 ### Association
 
-- belongs_to :user
-- has_many   :item
-- has_one    :street_address
+- belongs_to   :user
+- belongs_to   :item
+- has_one      :street_address
