@@ -54,23 +54,21 @@
 - belongs_to :user
 - belongs_to :item
 
-## Address テーブル
+## Street_address テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | postal_code   | string     | null: false                    |
-| prefectures   | string     | null: false                    |
-| municipality  | string     | null: false                    |
+| prefecture    | string     | null: false                    |
+| city          | string     | null: false                    |
 | address       | string     | null: false                    |
 | building_name | string     |                                |
-| municipality  | string     | null: false                    |
-| user          | string     | null: false                    |
-| item          | string     | null: false                    |
+| phone_number  | string     | null: false                    |
+| customer      | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
+- belongs_to :customer
 
 ## customer テーブル
 
@@ -78,11 +76,9 @@
 | ------- | ---------- | ------------------------------ |
 | user    | references | null: false, foreign_key: true |
 | item    | references | null: false, foreign_key: true |
-| address | references | null: false, foreign_key: true |
-
 
 ### Association
 
 - belongs_to :user
 - has_many   :item
-- has_one    :address
+- has_one    :street_address
