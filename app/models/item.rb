@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   validates :delivery_charge_id,  presence: true
   validates :delivery_area_id,    presence: true
   validates :days_id,             presence: true
-  validates :price,               presence: true,:numericality => { :greater_than_or_equal_to => 300 },:numericality => { :less_than_or_equal_to => 9999999 },format: { with: /\A[0-9]+\z/} do
+  validates :price,               presence: true,:numericality => { only_interger: true,:greater_than_or_equal_to => 300,:less_than_or_equal_to => 9_999_999 },format: { with: /\A[0-9]+\z/} do
   end
   validates :user,                presence: true
   has_one_attached :image
