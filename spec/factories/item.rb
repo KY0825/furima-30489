@@ -10,11 +10,6 @@ FactoryBot.define do
     price                   {"3000"}
 
     association :user
-    # association :category_id
-    # association :status_id
-    # association :delivery_charge_id
-    # association :delivery_area_id
-    # association :days_id
 
     after(:build) do |item|
       item.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
