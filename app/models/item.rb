@@ -9,10 +9,12 @@ class Item < ApplicationRecord
   validates :delivery_charge_id,  presence: true
   validates :delivery_area_id,    presence: true
   validates :days_id,             presence: true
-  validates :price,               presence: true, format: { with: /\A[0-9]+\z/} do #minimum: 300,muximum :9999999
+  validates :price,               presence: true,:numericality => { :greater_than_or_equal_to => 300 },:numericality => { :less_than_or_equal_to => 9999999 },format: { with: /\A[0-9]+\z/} do
   end
   validates :user,                presence: true
+  has_one_attached :image
 
+  belongs_to :user
   belongs_to_active_hash :category
   belongs_to_active_hash :status
   belongs_to_active_hash :delivery_charge
@@ -26,5 +28,3 @@ class Item < ApplicationRecord
   validates :days_id, numericality: { other_than: 1 } 
 
 end
-
-
