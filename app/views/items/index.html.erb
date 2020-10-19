@@ -125,7 +125,7 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "/items", method: :post, class: "subtitle" %>
     <ul class='item-lists'>
-      <% if @item.present? %>
+      <% if @items.present? %>
       <li class='list'>
       <% @items.each do |item| %>
         <%= link_to "#" do %>
