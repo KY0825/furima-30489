@@ -23,7 +23,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_area
   belongs_to_active_hash :days
 
-  with_options other_than: 1 do
+  with_options numericality:{other_than: 1} do
     validates :category_id
     validates :status_id
     validates :delivery_charge_id
