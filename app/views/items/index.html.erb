@@ -124,13 +124,14 @@
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "/items", method: :post, class: "subtitle" %>
+          <% if @items.present? %>
+
     <ul class='item-lists'>
-      <% if @items.present? %>
-      <li class='list'>
       <% @items.each do |item| %>
-        <%= link_to "#" do %>
+        <%= link_to item_path(item.id) do %>
+          <li class='list'>
           <div class='item-img-content'>
-            <%= image_tag item.image, class: "item-img" %>
+            <%= image_tag item.image.variant(resize: '500x500'), class: "item-img" %>
 
             <%# 商品が売れていればsold outを表示しましょう %>
             <%# <div class='sold-out'>
@@ -152,9 +153,10 @@
             </div>
           </div>
         </div>
-        <% end %>
+      <% end %>
       </li>
       <% else %>
+      <%# 商品が出品されていない時の表示（メモ） %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %>
@@ -170,7 +172,8 @@
             </div>
           </div>
         </div>
-        <% end %>
+        <%# //商品が出品されていない時の表示（メモ） %>
+      <% end %>
       </li>
       <%end%>
     </ul>
