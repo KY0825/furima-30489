@@ -18,7 +18,7 @@
 
 - has_many :items
 - has_many :comments
-- has_many :customers
+- has_one :customer_addresses
 
 
 ## items テーブル
@@ -56,7 +56,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## street_addresses テーブル
+## customer_addresses テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
@@ -66,21 +66,8 @@
 | address       | string     | null: false                    |
 | building_name | string     |                                |
 | phone_number  | string     | null: false                    |
-| customer      | references | null: false, foreign_key: true |
+| user          | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :customer
-
-## customers テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| user    | references | null: false, foreign_key: true |
-| item    | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to   :user
-- belongs_to   :item
-- has_one      :street_address
+- belongs_to :user
