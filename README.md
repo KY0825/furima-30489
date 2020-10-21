@@ -56,7 +56,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## street_addresses テーブル
+## customer_addresses テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
@@ -71,16 +71,3 @@
 ### Association
 
 - belongs_to :customer
-
-## customers テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| user    | references | null: false, foreign_key: true |
-| item    | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to   :user
-- belongs_to   :item
-- has_one      :street_address
