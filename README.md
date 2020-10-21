@@ -18,7 +18,7 @@
 
 - has_many :items
 - has_many :comments
-- has_many :customers
+- has_one :customer_addresses
 
 
 ## items テーブル
@@ -66,8 +66,8 @@
 | address       | string     | null: false                    |
 | building_name | string     |                                |
 | phone_number  | string     | null: false                    |
-| customer      | references | null: false, foreign_key: true |
+| user          | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :customer
+- belongs_to :user
