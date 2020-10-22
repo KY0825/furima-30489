@@ -10,6 +10,9 @@ class OrdersController < ApplicationController
   def create
     @user_order = UserOrder.create(user_order_params)
     if @user_order.valid?
+
+      itempay 
+
       @user_order.save
       redirect to action: :index
     else
