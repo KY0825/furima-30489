@@ -1,8 +1,12 @@
 class UserOrder
 
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :user, :item
+  attr_accessor :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :user, :item, :token
 
+  # Orderに関するバリデーション
+  validates :price, presence: true
+  validates :token, presence: true
+  # //Orderに関するバリデーション
   # CustomerAddressに関するバリデーション
   with_options presence: true do
     validates :postal_code,format: { with: /\A[0-9]+\z/}
