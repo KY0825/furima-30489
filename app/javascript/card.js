@@ -11,14 +11,15 @@ const pay = ()=> {
         number: formData.get("number"),
         cvc: formData.get("code"),
         exp_month: formData.get("month"),
-        exp_year: formData.get("year"),
+        exp_year: `20${formData.get("year")}`,
       };
 
       Payjp.createToken(card, (status, response) => {
+        console.log(status)
         if (status == 200){
         const token = response.id;
         const renderDom = document.getElementById("charge-form");
-        const tokenObj = `<input value=${token} name='token' type="hidden">`;
+        const tokenObj = `<input value=${token} name='token' type="hidden"> `;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
       }
 
