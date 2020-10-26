@@ -1,16 +1,15 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
+  before_action :set_item, only: [:create, :index]
   before_action :self_order, only: [:index, :create]
   before_action :illegal_purchase,only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @user_order = UserOrder.new
   end
 
   def create
     @user_order = UserOrder.new(user_order_params)
-    @item = Item.find(params[:item_id])
     if @user_order.valid?
       pay_item
       @user_order.save
@@ -24,6 +23,10 @@ class OrdersController < ApplicationController
 
   def user_order_params
     params.permit(:postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :item_id, :token).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
   def pay_item
