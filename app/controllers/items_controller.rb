@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :new, :edit]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :user_check, only: [:edit, :update, :destroy]
+  before_action :edit_ban, only: :edit
 
   def index
     @items = Item.order("created_at DESC")
@@ -21,9 +22,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
-    if @item.valid?
-      @item.update(item_params)
+    if @item.update(item_params)
       redirect_to item_path
     else
       render :edit
@@ -54,4 +57,9 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit_ban
+    if @item.order.present?
+      redirect_to root_path
+    end
+  end
 end

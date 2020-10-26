@@ -17,8 +17,7 @@
 ### Association
 
 - has_many :items
-- has_many :comments
-- has_many :customers
+- has_many :order
 
 
 ## items テーブル
@@ -42,11 +41,10 @@
 - has_one    :customer
 - has_many   :comments
 
-## comments テーブル
+## order テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| text   | text       | null: false                    |
 | user   | references | null: false, foreign_key: true |
 | item   | references | null: false, foreign_key: true |
 
@@ -55,8 +53,9 @@
 
 - belongs_to :user
 - belongs_to :item
+- has one :customer_address
 
-## street_addresses テーブル
+## customer_addresses テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
@@ -66,21 +65,8 @@
 | address       | string     | null: false                    |
 | building_name | string     |                                |
 | phone_number  | string     | null: false                    |
-| customer      | references | null: false, foreign_key: true |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :customer
-
-## customers テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| user    | references | null: false, foreign_key: true |
-| item    | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to   :user
-- belongs_to   :item
-- has_one      :street_address
+- belongs_to :order

@@ -15,6 +15,7 @@ class Item < ApplicationRecord
   end
 
   has_one_attached :image
+  has_one :order
 
   belongs_to :user
   belongs_to_active_hash :category
