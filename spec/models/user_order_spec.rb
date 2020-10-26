@@ -11,6 +11,10 @@ RSpec.describe UserOrder, type: :model do
       it "郵便番号、都道府県、市区町村、番地、建物名、電話番号が存在すれば登録できる" do
         expect(@user_order).to be_valid
       end
+      it "郵便番号、都道府県、市区町村、番地電話番号が存在すれば、建物名がなくても登録できる" do
+        @user_order.building_name = nil
+        expect(@user_order).to be_valid
+      end
     end
     
     context '購入ができない時' do
