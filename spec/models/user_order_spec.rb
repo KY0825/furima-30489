@@ -25,7 +25,7 @@ RSpec.describe UserOrder, type: :model do
         expect(@user_order.errors.full_messages).to include("Postal code can't be blank")
       end
       it "郵便番号が数字だけだと登録できない" do
-        @user_order.postal_code = 1111111
+        @user_order.postal_code = "1111111"
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include("Postal code is invalid")
       end
@@ -35,12 +35,12 @@ RSpec.describe UserOrder, type: :model do
         expect(@user_order.errors.full_messages).to include("Postal code is invalid")
       end
       it "郵便番号が6桁だと登録できない" do
-        @user_order.postal_code = 111-111
+        @user_order.postal_code = "111-111"
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include("Postal code is invalid")
       end
       it "郵便番号が8桁だと登録できない" do
-        @user_order.postal_code = 1111-1111
+        @user_order.postal_code = "1111-1111"
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include("Postal code is invalid")
       end
