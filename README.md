@@ -17,8 +17,7 @@
 ### Association
 
 - has_many :items
-- has_many :comments
-- has_one :customer_addresses
+- has_many :order
 
 
 ## items テーブル
@@ -42,7 +41,7 @@
 - has_one    :customer
 - has_many   :comments
 
-## corder テーブル
+## order テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
@@ -66,9 +65,8 @@
 | address       | string     | null: false                    |
 | building_name | string     |                                |
 | phone_number  | string     | null: false                    |
-| user          | references | null: false, foreign_key: true |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
 - belongs_to :order
