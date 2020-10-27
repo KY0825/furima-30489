@@ -10,7 +10,7 @@ class Item < ApplicationRecord
     validates :delivery_charge_id
     validates :delivery_area_id
     validates :days_id
-    validates :price, numericality:{ only_interger: true,greater_than_or_equal_to: 300,less_than_or_equal_to: 9_999_999 },format: { with: /\A[0-9]+\z/}
+    validates :price, numericality:{ only_interger: true,greater_than_or_equal_to: 299,less_than_or_equal_to: 10_000_000 },format: { with: /\A[0-9]+\z/}
     validates :user
   end
 
